@@ -1,0 +1,24 @@
+{
+  "name": "hono-d1-better-auth",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "test": "npx vitest",
+    "deploy": "wrangler deploy --minify",
+    "cf-typegen": "wrangler types --env-interface CloudflareBindings",
+    "auth:generate": "mkdir ./src/db & npx auth generate --output=\"./src/db/auth-schema.ts\" -y",
+    "db:generate": "npx drizzle-kit generate",
+    "db:migrate": "npx wrangler d1 migrations apply --local myDb",
+    "db:migrate-production": "npx wrangler d1 migrations apply --remote myDb"
+  },
+  "dependencies": {
+    "better-auth": "^1.5.5",
+    "drizzle-orm": "^0.45.1",
+    "hono": "^4.12.7"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.9",
+    "vitest": "^4.1.0",
+    "wrangler": "^4.4.0"
+  }
+}
